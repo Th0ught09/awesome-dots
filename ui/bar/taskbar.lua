@@ -1,12 +1,7 @@
 local awful = require("awful")
-local dpi = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
 local screen = require("awful.screen")
-
--- Create a wibox for each screen and add it
-local taglist_buttons = require("bindings.taglist")
-local tasklist_buttons = require("bindings.tasklist")
 
 local function set_wallpaper(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
@@ -15,7 +10,6 @@ local function set_wallpaper_vert(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
 end
 
--- local meminfo = require("ui.bar.widgets.mem")
 local memory = wibox.widget({
 	widget = wibox.widget.textbox,
 })
@@ -30,6 +24,7 @@ gears.timer({
 	autostart = true,
 	callback = function()
 		print("called")
+		print(os.getenv("FOO"))
 		io.input("/proc/meminfo")
 		A = io.read("*a")
 		local total = A:match("%d+", string.find(A, "MemTotal"))
@@ -65,13 +60,11 @@ do
 			layout = awful.layout.suit.tile.left,
 		})
 	end
-	--
-	-- -- Tags
+	-- Tags
 	local tags = { " ", "󰈙 ", " ", " ", " ", " ", " ", " ", " " }
 	for tag_index = 1, #tags do
 		add_tag({ tag = tags[tag_index] })
 	end
-	--
 	local taglist = awful.widget.taglist({
 		screen = screen,
 		filter = awful.widget.taglist.filter.all,
@@ -181,5 +174,3 @@ if vert_screen then
 		},
 	})
 end
-
--- }}}
