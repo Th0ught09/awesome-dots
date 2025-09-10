@@ -4,6 +4,7 @@ local modkey = "Mod4"
 local terminal = "alacritty"
 local mymainmenu = require("widgets.mainmenu")
 local hotkeys_popup = require("awful.hotkeys_popup.keys")
+local mypromptbox = awful.widget.prompt()
 
 local globals = gears.table.join(
 

@@ -4,10 +4,10 @@ local wibox = require("wibox")
 local screen = require("awful.screen")
 
 local function set_wallpaper(s)
-	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
+	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
 end
 local function set_wallpaper_vert(s)
-	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
+	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
 end
 
 local memory = wibox.widget({
@@ -51,6 +51,9 @@ end)
 do
 	screen = awful.screen.getbycoord(0, 0)
 	screen = screens[screen]
+	screen.mypromptbox = awful.widget.prompt({
+		prompt = "Execute: ",
+	})
 	set_wallpaper(screen)
 	local function add_tag(options)
 		local gap = options.gap or 0
@@ -96,6 +99,7 @@ do
 			spacing = 10,
 			spacing_widget = wibox.widget.separator,
 			taglist,
+			screen.mypromptbox,
 		},
 		tasklist,
 		{
