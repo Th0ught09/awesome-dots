@@ -1,6 +1,6 @@
 # AwesomeWM
 
-- Dotfiles for my (awesome)[https://github.com/awesomeWM/awesome] config
+- Dotfiles for my [awesome](https://github.com/awesomeWM/awesome) config
 
 ## installation
 
