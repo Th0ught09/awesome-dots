@@ -10,7 +10,7 @@ local taglist_buttons = require("bindings.taglist")
 local tasklist_buttons = require("bindings.tasklist")
 
 local function set_wallpaper(s)
-	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
+	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
 end
 local function set_wallpaper_vert(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/nixos.png", s, true)
@@ -48,15 +48,15 @@ gears.timer({
 	end,
 })
 
-local screens = {}
+-- local screens = {}
 
-awful.screen.connect_for_each_screen(function(s)
-	screens[#screens + 1] = s
-end)
-
-do
-	screen = awful.screen.getbycoord(0, 0)
-	screen = screens[screen]
+awful.screen.connect_for_each_screen(function(screen)
+	-- screens[#screens + 1] = s
+	-- end)
+	--
+	-- do
+	-- 	screen = awful.screen.getbycoord(0, 0)
+	-- 	screen = screens[screen]
 	set_wallpaper(screen)
 	local function add_tag(options)
 		local gap = options.gap or 0
@@ -116,6 +116,6 @@ do
 			wibox.widget.systray(),
 		},
 	})
-end
+end)
 
 -- Tags
