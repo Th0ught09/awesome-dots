@@ -2,7 +2,6 @@ local gears = require("gears")
 local awful = require("awful")
 local modkey = "Mod4"
 local terminal = "alacritty"
-local mymainmenu = require("widgets.mainmenu")
 local hotkeys_popup = require("awful.hotkeys_popup.keys")
 local mypromptbox = awful.widget.prompt()
 
@@ -16,9 +15,6 @@ local globals = gears.table.join(
 	awful.key({ modkey }, "l", function()
 		awful.client.focus.byidx(-1)
 	end, { description = "focus previous by index", group = "client" }),
-	awful.key({ modkey }, "w", function()
-		mymainmenu:show()
-	end, { description = "show main menu", group = "awesome" }),
 
 	-- Layout manipulation
 	awful.key({ modkey, "Shift" }, "j", function()
