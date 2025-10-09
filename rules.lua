@@ -1,6 +1,5 @@
 local beautiful = require("beautiful")
 local awful = require("awful")
-local gears = require("gears")
 local clientkeys = require("bindings.clients")
 local clientbuttons = require("bindings.buttons")
 return {
