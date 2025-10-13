@@ -6,9 +6,6 @@ local screen = require("awful.screen")
 local function set_wallpaper(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
 end
-local function set_wallpaper_vert(s)
-	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
-end
 
 local memory = wibox.widget({
 	widget = wibox.widget.textbox,
@@ -19,7 +16,7 @@ local cpu = wibox.widget({
 })
 
 gears.timer({
-	timeout = 10,
+	timeout = 1,
 	call_now = true,
 	autostart = true,
 	callback = function()
@@ -119,10 +116,13 @@ local vert_screen = nil
 if awful.screen.getbycoord(1920, 0) then
 	local vert_screen_index = awful.screen.getbycoord(1920, 0)
 	vert_screen = screens[vert_screen_index]
+	vert_screen.mypromptbox = awful.widget.prompt({
+		prompt = "Execute: ",
+	})
 end
 
 if vert_screen then
-	set_wallpaper_vert(vert_screen)
+	set_wallpaper(vert_screen)
 	local function add_tag(options)
 		local gap = options.gap or 0
 		local layout = options.layout or awful.layout.suit.tile.left
