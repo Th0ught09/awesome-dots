@@ -46,31 +46,21 @@ gears.timer({
 	end,
 })
 
--- local screens = {}
-
 awful.screen.connect_for_each_screen(function(screen)
-	-- screens[#screens + 1] = s
-	-- end)
-	--
-	-- do
-	-- 	screen = awful.screen.getbycoord(0, 0)
-	-- 	screen = screens[screen]
 	set_wallpaper(screen)
 	local function add_tag(options)
 		local gap = options.gap or 0
 		awful.tag.add(options.tag, {
 			screen = screen,
 			gap = gap,
-			layout = awful.layout.suit.floating,
+			layout = awful.layout.suit.fair,
 		})
 	end
-	--
-	-- -- Tags
+	-- Tags
 	local tags = { " ", "󰈙 ", " ", " ", " ", " ", " ", " ", " " }
 	for tag_index = 1, #tags do
 		add_tag({ tag = tags[tag_index] })
 	end
-	--
 	local taglist = awful.widget.taglist({
 		screen = screen,
 		filter = awful.widget.taglist.filter.all,

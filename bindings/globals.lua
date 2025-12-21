@@ -105,15 +105,8 @@ local globals = gears.table.join(
 	end, { description = "lua execute prompt", group = "awesome" }),
 	awful.key({ modkey }, "s", function()
 		awful.spawn("flameshot gui")
-	end, { description = "flameshow", group = "awesome" }),
+	end, { description = "flameshot", group = "awesome" }),
 
-	-- awful.key({ modkey, "Shift" }, "s", function()
-	-- awful.spawn("flameshot screen -n 0 -p ~/Games/RimSS/$(date -u +%Y-%m-%dT%H-%M)")
-	-- 	awful.spawn("flameshot screen -n 1 -p /home/kirkm/Games/RimSS/")
-	-- end, { description = "Rimworld Screenshot", group = "awesome" })
-	-- Menubar
-	-- awful.key({ modkey }, "p", function() menubar.show() end,
-	--   { description = "show the menubar", group = "launcher" })
 	awful.key({ modkey, "Shift" }, "f", function()
 		awful.spawn("ghostty -e yazi")
 	end, { description = "File Manager", group = "system" }),
