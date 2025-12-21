@@ -1,13 +1,9 @@
 local awful = require("awful")
-local dpi = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local wibox = require("wibox")
-local screen = require("awful.screen")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 
 -- Create a wibox for each screen and add it
-local taglist_buttons = require("bindings.taglist")
-local tasklist_buttons = require("bindings.tasklist")
 
 local function set_wallpaper(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/background.png", s, true)
