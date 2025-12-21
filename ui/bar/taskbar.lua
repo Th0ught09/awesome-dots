@@ -30,7 +30,6 @@ gears.timer({
 	call_now = true,
 	autostart = true,
 	callback = function()
-		print("called")
 		io.input("/proc/meminfo")
 		A = io.read("*a")
 		local total = A:match("%d+", string.find(A, "MemTotal"))
@@ -42,7 +41,6 @@ gears.timer({
 		A = io.read("*a")
 		local pm = A:match("%d.%d+")
 		local cpu_per = (pm / 8) * 100
-		print(pm)
 		cpu_per = string.format("   %d%%", cpu_per)
 		cpu.text = cpu_per
 	end,
