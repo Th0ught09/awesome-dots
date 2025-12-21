@@ -116,7 +116,13 @@ local globals = gears.table.join(
 	--   { description = "show the menubar", group = "launcher" })
 	awful.key({ modkey, "Shift" }, "f", function()
 		awful.spawn("ghostty -e yazi")
-	end, { description = "File Manager", group = "system" })
+	end, { description = "File Manager", group = "system" }),
+	awful.key({}, "#122", function()
+		awful.spawn("amixer set Master 10%-")
+	end, { description = "Volume Down" }),
+	awful.key({}, "#123", function()
+		awful.spawn("amixer set Master 10%+")
+	end, { description = "Volume Up" })
 )
 
 -- Switch to client by index
