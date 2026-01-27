@@ -5,6 +5,7 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local github_contributions_widget =
 	require("awesome-wm-widgets.github-contributions-widget.github-contributions-widget")
 local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+local weather_widget = require("awesome-wm-widgets.weather-api-widget.weather")
 
 local function set_wallpaper(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/background.ppm", s, true)
@@ -103,6 +104,10 @@ awful.screen.connect_for_each_screen(function(screen)
 			spacing_widget = wibox.widget.separator,
 			cpu,
 			battery_widget(),
+			weather_widget({
+				api_key = "ab1c75e6f62141f29a7152054262701",
+				coordinates = { 53.436066, -2.215692 },
+			}),
 			wibox.widget.systray(),
 		},
 	})
