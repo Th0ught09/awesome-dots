@@ -2,8 +2,9 @@ local awful = require("awful")
 local gears = require("gears")
 local wibox = require("wibox")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-
--- Create a wibox for each screen and add it
+local github_contributions_widget =
+	require("awesome-wm-widgets.github-contributions-widget.github-contributions-widget")
+local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 
 local function set_wallpaper(s)
 	gears.wallpaper.maximized("/home/kirkm/Pictures/background.ppm", s, true)
@@ -89,7 +90,12 @@ awful.screen.connect_for_each_screen(function(screen)
 			spacing_widget = wibox.widget.separator,
 			taglist,
 		},
-		tasklist,
+		{
+			layout = wibox.layout.fixed.horizontal,
+			github_contributions_widget({ username = "Th0ught09" }),
+			net_speed_widget(),
+			tasklist,
+		},
 		{
 			layout = wibox.layout.fixed.horizontal,
 			memory,
