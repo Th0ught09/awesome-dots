@@ -93,7 +93,7 @@ awful.screen.connect_for_each_screen(function(screen)
 		},
 		{
 			layout = wibox.layout.fixed.horizontal,
-			github_contributions_widget({ username = "Th0ught09" }),
+			github_contributions_widget({ username = "Th0ught09", days = 30 }),
 			net_speed_widget(),
 			tasklist,
 		},
