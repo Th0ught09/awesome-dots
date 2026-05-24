@@ -136,7 +136,41 @@ local globals = gears.table.join(
 			textbox = promptbox,
 			exe_callback = awful.util.eval,
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
+			hooks = {
+				{
+					{ "Shift" },
+					"Return",
+					function(command)
+						print("shift")
+					end,
+				},
+				{
+					{},
+					"Return",
+					function(command)
+						if command:sub(1, 1) == ":" then
+							return terminal .. " -e " .. command:sub(2)
+						end
+						return command
+					end,
+				},
+			},
 		})
+		-- hooks = {
+		--   -- Apply startup notification properties with Shift-Return.
+		--   {{"Shift"  }, "Return", function(command)
+		--     awful.screen.focused().mypromptbox:spawn_and_handle_error(
+		--       command, {floating=true})
+		--   end},
+		--   -- Override default behavior of "Return": launch commands prefixed
+		--   -- with ":" in a terminal.
+		--   {{}, "Return", function(command)
+		--     if command:sub(1,1) == ":" then
+		--       return terminal .. ' -e ' .. command:sub(2)
+		--     end
+		--     return command
+		--   end}
+		-- }
 		-- p2.visible = false
 	end, { description = "lua execute prompt", group = "awesome" }),
 	awful.key({ modkey }, "s", function()
