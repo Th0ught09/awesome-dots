@@ -15,8 +15,6 @@ local promptbox = wibox.widget({
 
 local p2 = awful.popup({
 	widget = wibox.widget({
-		text = "A popup",
-		forced_height = 100,
 		widget = promptbox,
 	}),
 	border_color = "#777777",
