@@ -8,7 +8,6 @@ local mymainmenu = require("widgets.mainmenu")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local promptbox = wibox.widget({
-	markup = "This <i>is</i> a <b>textbox</b>!!!",
 	halign = "center",
 	valign = "center",
 	widget = wibox.widget.textbox,
