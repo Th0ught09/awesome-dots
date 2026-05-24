@@ -133,6 +133,7 @@ local globals = gears.table.join(
 	end, { description = "run prompt", group = "launcher" }),
 
 	awful.key({ modkey }, "x", function()
+		p2.visible = true
 		awful.prompt.run({
 			prompt = " Run Lua code: ",
 			textbox = promptbox,
