@@ -23,6 +23,34 @@ local p2 = awful.popup({
 	preferred_anchors = { "front", "back" },
 	visible = false,
 })
+
+local function spawn_prompt(text)
+	awful.prompt.run({
+		textbox = promptbox,
+		text = text,
+		exe_callback = awful.util.eval,
+		history_path = awful.util.get_cache_dir() .. "/history_eval",
+		hooks = {
+			{
+				{ "Shift" },
+				"Return",
+				function(command)
+					spawn_prompt(command .. "\n")
+				end,
+			},
+			{
+				{},
+				"Return",
+				function(command)
+					if command:sub(1, 1) == ":" then
+						return terminal .. " -e " .. command:sub(2)
+					end
+					return command
+				end,
+			},
+		},
+	})
+end
 require("awful.hotkeys_popup.keys")
 local globals = gears.table.join(
 
@@ -131,47 +159,7 @@ local globals = gears.table.join(
 
 	awful.key({ modkey }, "x", function()
 		p2.visible = true
-		awful.prompt.run({
-			prompt = " Run Lua code: ",
-			textbox = promptbox,
-			exe_callback = awful.util.eval,
-			history_path = awful.util.get_cache_dir() .. "/history_eval",
-			hooks = {
-				{
-					{ "Shift" },
-					"Return",
-					function(command)
-						print("shift")
-					end,
-				},
-				{
-					{},
-					"Return",
-					function(command)
-						if command:sub(1, 1) == ":" then
-							return terminal .. " -e " .. command:sub(2)
-						end
-						return command
-					end,
-				},
-			},
-		})
-		-- hooks = {
-		--   -- Apply startup notification properties with Shift-Return.
-		--   {{"Shift"  }, "Return", function(command)
-		--     awful.screen.focused().mypromptbox:spawn_and_handle_error(
-		--       command, {floating=true})
-		--   end},
-		--   -- Override default behavior of "Return": launch commands prefixed
-		--   -- with ":" in a terminal.
-		--   {{}, "Return", function(command)
-		--     if command:sub(1,1) == ":" then
-		--       return terminal .. ' -e ' .. command:sub(2)
-		--     end
-		--     return command
-		--   end}
-		-- }
-		-- p2.visible = false
+		spawn_prompt("")
 	end, { description = "lua execute prompt", group = "awesome" }),
 	awful.key({ modkey }, "s", function()
 		awful.spawn("flameshot gui")
