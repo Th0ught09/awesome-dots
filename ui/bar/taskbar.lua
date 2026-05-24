@@ -60,6 +60,12 @@ awful.screen.connect_for_each_screen(function(screen)
 	for tag_index = 1, #tags do
 		add_tag({ tag = tags[tag_index] })
 	end
+	screen.connect_signal("removed", function(c)
+		for tag_index = 1, #tags do
+			;
+		end
+	end)
+
 	local taglist = awful.widget.taglist({
 		screen = screen,
 		filter = awful.widget.taglist.filter.all,
