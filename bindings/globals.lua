@@ -46,6 +46,9 @@ local globals = gears.table.join(
 	awful.key({ modkey }, "d", function()
 		awful.spawn("rofi -show drun -display-drun")
 	end, { description = "spawn rofi", group = "launcher" }),
+	awful.key({ modkey }, "e", function()
+		awful.spawn("emacsclient -e (emms-pause)")
+	end, { description = "pause emms", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "c", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
