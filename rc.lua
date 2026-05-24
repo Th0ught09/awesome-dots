@@ -16,6 +16,8 @@ require("awful.hotkeys_popup.keys")
 
 require("errors")
 
+-- io.output("~/.local/share/awesome/logs.log")
+
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/kirkm/.config/awesome/themes/sky/theme.lua")
 

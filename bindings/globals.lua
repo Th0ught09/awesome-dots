@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local signal = require("signals")
 local modkey = "Mod4"
 local terminal = "alacritty"
 local mymainmenu = require("widgets.mainmenu")
@@ -46,6 +47,9 @@ local globals = gears.table.join(
 	awful.key({ modkey }, "d", function()
 		awful.spawn("rofi -show drun -display-drun")
 	end, { description = "spawn rofi", group = "launcher" }),
+	awful.key({ modkey, "Control" }, "d", function()
+		signal.emit_signal("debug")
+	end),
 	awful.key({ modkey }, "e", function()
 		awful.spawn("emacsclient -e (emms-pause)")
 	end, { description = "pause emms", group = "awesome" }),
@@ -112,7 +116,7 @@ local globals = gears.table.join(
 		awful.prompt.run({
 			prompt = " Run Lua code: ",
 			textbox = awful.screen.focused().mypromptbox.widget,
-			-- exe_callback = awful.util.eval,
+			exe_callback = awful.util.eval,
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),

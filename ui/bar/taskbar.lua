@@ -60,11 +60,31 @@ awful.screen.connect_for_each_screen(function(screen)
 	for tag_index = 1, #tags do
 		add_tag({ tag = tags[tag_index] })
 	end
-	screen.connect_signal("removed", function(c)
-		for tag_index = 1, #tags do
-			;
-		end
-	end)
+	print("starting print")
+	-- for i = 1, #screen.clients do
+	-- 	print("printing for screen" .. i)
+	-- 	print(screen.clients[i])
+	-- end
+	-- screen.connect_signal("debug", function(c)
+	-- 	for i = 1, #c.clients do
+	-- 		print("printing for screen" .. i)
+	-- 		print(c.clients[i])
+	-- 	end
+	-- end)
+	-- screen.connect_signal("removed", function(c)
+	-- 	for tag_index = 1, #tags do
+	-- 		;
+	-- 	end
+	-- end)
+	-- gears.timer({
+	-- 	autostart = true,
+	-- 	timer = 10,
+	-- 	callback = function(c)
+	-- 		for i = 1, #c.clients do
+	-- 			print(c.clients[i])
+	-- 		end
+	-- 	end,
+	-- })
 
 	local taglist = awful.widget.taglist({
 		screen = screen,
